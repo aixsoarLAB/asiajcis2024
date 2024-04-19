@@ -1,0 +1,17 @@
+# System files
+.DS_Store
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.gz
+*.synctex.gz
+
+# Compiled PDFs
+/main.pdf
+
+# Font files (if they should not be tracked)
+/fonts/
+
+# Build directory
+/build/

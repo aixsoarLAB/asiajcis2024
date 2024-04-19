@@ -1,6 +1,66 @@
-\section{Experiments}
-\subsection{Environment}
-\subsection{Metrics}
-\subsection{Effectiveness Analysis}
-\subsection{Efficiency Analysis}
-\subsection{Discussion}
+\section{Experiments}~\label{sec:exps}
+
+In this section, we compare our proposed method to other baseline approaches, and illustrate the experimental result to justify our proposed method. As our goal is to identify and detect the groups of attacking behavior, all the experiments are designed to answer the question: When identifying the different intensions of intrusion behavior, how effective is it to identify the anomaly sequences (network traffic identify abnormal protocol that might be encrypted traffic or untrusted services....), especially in terms of hybrid short-term/long-term, multiple attacking steps? The applied data and the parameters for our experiments are in- troduced in Sec.~\ref{sec:env}, followed by the experimental results for the datasets in Sec. 4.2.
+
+\subsection{Dataset and Evaluation Metrics}~\label{sec:env}
+
+In our analysis, we use a CICIDS2017 dataset public benchmark\footnote{"CICIDS2017: https://www.unb.ca/cic/datasets/ids-2017.html"} and real world data collected from online game service provider around 700+ hosts.  
+
+Development (deeplog), hyvervision, python integration, VMWare 64GB, 24 core, intel, virtual mahcines
+
+testbed
+
+(1) hypervision: emphasize inside NDR (lateral movement), outside NDR (fast detection abnormal protocol p2p...)  CICIDS2017/2018, abnormal protocol connection precision/recall/f-measure
+inside outside
+precision/recall precision/recall
+.....
+
+(2) hosts risk assessment (IDS events) end point event anomaly detection (syslog)
+wazhu + deeplog(syslog) + deeplog(IDS event)
+How effectiveness of deeplog for event anomaly detection?
+True 
+20 3 compromised
+how effectiveness of assessing host risk level......
+precision/recall precision/recall
+
+(3)  deep threat graph
+deep threat graph attack scenario, high-level attack steps, root cause...
+qualitative analysis. We might invite 5 domain experts to evaluate...
+
+\subsection{Effectiveness Analysis}~\label{sec:effect}
+
+(1) network abnormal behavior detection evaluation 
+8 categories
+real case
+CICIDS2017 + RDP/P2P
+
+sensitive analysis (tuning parameters, k, )
+
+(2) hosts risk assessment (IDS events) end point event anomaly detection (syslog)
+IDS host Precision/Recall
+risk score is high, actually is attack -> recall is good
+risk score is low, actually is attack -> precision is not good
+Table/Figure
+
+host event normal behavior
+? host ? time interval attack detected O
+x host x time attack detected X
+CICIDS2017 200 hosts 20 attacks records, 
+real data?
+
+(3) deep threat graph
+questionnaire
+
+\subsection{Efficiency Analysis/case study APT29, APT41}~\label{sec:effi} 
+
+\subsection{Discussion}~\label{sec:dis}
+
+
+
+
+
+
+
+
+
+

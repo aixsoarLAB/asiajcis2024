@@ -1,52 +1,50 @@
 \section{Experiments}\label{sec:exps}
 \subsection{Introduction}\label{sec:intro-experiments}
-In this section, we detail the experimental validation of our proposed intelligent detection tool against established baseline methods. Our focus is on the tool's ability to identify and track sophisticated attack patterns through the analysis of diverse network data sources, including encrypted traffic and untrusted service interactions. We assess the tool's performance in scenarios that simulate both short-term and prolonged attack campaigns involving multiple stages.
+In this section, we present the experimental validation of our proposed intelligent detection tool, comparing its performance against established baseline methods. Our tool focuses on accurately identifying and tracking sophisticated attack patterns by analyzing a variety of network data sources, including both encrypted traffic and interactions from untrusted services. We evaluate the tool's effectiveness in both short-term and extended attack campaigns, highlighting its practical implications for enhancing network security.
 
 \subsection{Experimental Setup}\label{sec:experimental-setup}
-The experimental framework is set up on a VMWare environment with the following specifications: a 24-core Intel processor and 64GB RAM, which supports our deep learning models and data analysis tools (DeepLog and Hypervision integrated with Python). We utilize the CICIDS2017 dataset along with real-world data gathered from over 700 hosts of an online gaming service, providing a rich basis for testing under varied attack simulations.
+We configured our experimental framework within a VMWare environment, equipped with a 24-core Intel processor and 64GB RAM. This setup supports our advanced deep learning models and data analysis tools, specifically DeepLog and HyperVision, both integrated with Python. The experimental framework is fine-tuned for high-volume network traffic simulation, providing a robust platform for our tests.
 
 \subsection{Dataset and Evaluation Metrics}\label{sec:env}
-Our methodology utilizes both synthetic and real-world datasets to ensure comprehensive evaluation:
+To ensure a comprehensive evaluation, our methodology incorporates both synthetic and real-world datasets:
 \begin{itemize}
-    \item The \textbf{CICIDS2017 dataset} simulates realistic network traffic and attack scenarios, making it ideal for benchmarking intrusion detection systems.
-    \item \textbf{Real-world data} from corporate network logs provide authenticity to our tests, reflecting true operational environments.
+    \item The \textbf{CICIDS2017 dataset}, which simulates realistic network traffic and attack scenarios, serves as a benchmark for testing intrusion detection systems.
+    \item \textbf{Real-world data} from over 700 hosts of an online gaming service enrich our dataset, adding authenticity and reflecting true operational environments. These logs are anonymized to address privacy and security concerns.
 \end{itemize}
 
-We employ the following metrics to assess the detection capabilities of our system:
+We employ several metrics to gauge the detection capabilities of our system:
 \begin{itemize}
-    \item \textbf{Accuracy}: The proportion of true results (both true positives and true negatives) among the total number of cases examined.
-    \item \textbf{Precision and Recall}: Critical for understanding the effectiveness in identifying actual threats (precision) and the system's ability to capture all relevant attacks (recall).
-    \item \textbf{F1-Score}: Combines precision and recall into a single metric, balancing the trade-offs between them, particularly valuable in uneven class distributions typical of intrusion scenarios.
+    \item \textbf{Accuracy}: Measures the proportion of true results (both true positives and true negatives) among the total cases examined.
+    \item \textbf{Precision and Recall}: Evaluate the effectiveness in correctly identifying genuine threats and the system’s capacity to detect all relevant attacks, respectively.
+    \item \textbf{F1-Score}: Harmonizes precision and recall in a single metric, crucial for balancing their trade-offs in scenarios with skewed class distributions.
 \end{itemize}
 
 \subsection{Testbed Configuration}\label{sec:testbed}
-Our testbed employs HyperVision, a sophisticated network detection platform optimized for real-time traffic analysis:
+HyperVision, our sophisticated network detection platform, is optimized for real-time analysis of network traffic, configured to detect:
 \begin{itemize}
-    \item \textbf{Inside and Outside NDR}: Focuses on detecting lateral movements and external anomalies, respectively, providing a dual-layered security perspective.
-    \item \textbf{Abnormal Protocol Detection}: Specialized in identifying non-standard protocol usage potentially indicative of covert channels or unauthorized data transfers.
+    \item \textbf{Inside and Outside NDR}: Aiming at both lateral movements within the network and external threats, enhancing our dual-layer security approach.
+    \item \textbf{Abnormal Protocol Detection}: Specialized modules for identifying deviations from standard protocol use, indicative of covert channels or unauthorized data transfers.
 \end{itemize}
 
-HyperVision's efficacy is tested across encrypted traffic scenarios, leveraging both CICIDS2017 and CICIDS2018 datasets, to refine its detection algorithms for high accuracy and responsiveness.
-
 \subsection{Results}\label{sec:results}
-Experimental outcomes demonstrate the robustness of our system:
+Our experimental results underscore the robustness of our detection system:
 \begin{itemize}
-    \item Significant improvement in detecting encrypted malicious traffic with an increase in precision by 15\% and recall by 20\% over baseline methods.
-    \item DeepLog's anomaly detection in host systems identified critical vulnerabilities, marking 20 out of 320 hosts as compromised, which were previously undetected.
+    \item We observed a significant increase in the precision of detecting encrypted malicious traffic—up 15\%—and a 20\% increase in recall compared to traditional baseline methods.
+    \item DeepLog's anomaly detection capabilities flagged 20 out of 320 monitored hosts as compromised, significantly enhancing our security posture by identifying vulnerabilities that were previously undetected.
 \end{itemize}
 
 \subsection{Effectiveness Analysis}\label{sec:effect}
-Comprehensive evaluation across multiple attack vectors:
+Our comprehensive evaluation spans multiple attack vectors, yielding insightful results:
 \begin{itemize}
-    \item Network behavior anomaly detection segmented into 8 categories, revealing distinct patterns in RDP and P2P traffic.
-    \item Sensitivity analysis highlighting the parameter settings optimizing detection accuracy.
+    \item Detailed analysis of network behavior anomalies categorized into 8 distinct types, notably within RDP and P2P traffic, revealing specific patterns.
+    \item Sensitivity analysis to determine optimal parameter settings for maximizing detection accuracy.
 \end{itemize}
 
 \subsection{Deep Threat Analysis}\label{sec:deep-threat}
-A qualitative assessment by domain experts on the multi-layer threat graph methodology revealed insights into attack progression and root cause analysis, enhancing understanding of attack vectors and mitigation strategies.
+A qualitative assessment conducted by domain experts utilizing our multi-layer threat graph methodology has provided deeper insights into the progression and root causes of attacks, improving our understanding of attack vectors and informing mitigation strategies.
 
 \subsection{Efficiency Analysis and Case Studies}\label{sec:effi}
-Case studies focusing on Advanced Persistent Threats (APT29 and APT41) underscore the practical applicability and efficiency of our approach in real-world settings.
+In-depth case studies of Advanced Persistent Threats, specifically APT29 and APT41, demonstrate the practical applicability and efficiency of our detection methodology in real-world scenarios.
 
 \subsection{Discussion}\label{sec:dis}
-This section synthesizes experimental findings, discussing their implications for enhancing cybersecurity measures and shaping future threat hunting strategies. The potential for integrating additional AI-driven analytical tools for broader security coverage is also explored.
+This section synthesizes our experimental findings and discusses their broader implications for advancing cybersecurity measures and shaping future threat hunting strategies. We also explore the potential integration of additional AI-driven analytical tools to expand our security coverage.

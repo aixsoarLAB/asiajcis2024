@@ -1,1 +1,49 @@
 \section{System Architecture}
+
+\begin{figure*}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../images/Screenshot 2024-05-03 123930.png}
+    \caption{Overview of the System Architecture}
+    \label{fig:systemarch}
+\end{figure*}
+
+
+
+\subsection{Model 1: Anomaly Detection and Interpretation}
+The first model focuses on evaluating event logs and NIDS alert logs. This includes several components designed to parse, interpret, and extract meaningful patterns from the data.
+
+\subsubsection{Interpreter}
+The Interpreter component processes incoming data by converting unstructured or semi-structured information into a structured format that can be analyzed for anomalies.
+
+\subsubsection{Behavior Extractor}
+This component extracts behavioral patterns from the data provided by hosts, particularly from event logs, identifying deviations from normal operations that signal potential security threats.
+
+\subsubsection{Context Builder}
+Integrates contextual information into the data interpretation process, enhancing the accuracy and relevance of the anomaly detection.
+
+\subsection{Model 2: Tagging and Network Analysis}
+This model evaluates NIDS alert logs and network flow pcap files. It structures these data sources and utilizes the information to build a comprehensive network graph, which is crucial for visualizing network interactions and identifying potential threats.
+
+\subsubsection{Data Structuring}
+Organizes raw data into a usable format, integrating various data sources, including NIDS alert logs and pcap files, essential for the initial detection of anomalies.
+
+\subsubsection{Abnormal Tagging}
+Following data structuring, this process classifies and labels data instances showing anomalous characteristics, aiding in the focused analysis of potential threats.
+
+\subsubsection{Network Graph}
+Constructs a dynamic representation of network interactions, fundamentally supporting the visualization of threat dispersion within the network.
+
+\subsection{Model 3: Traffic and Feature Analysis}
+This final model evaluates pcap files exclusively, focusing on the detection of malicious traffic and the extraction of relevant features for a deeper analysis of anomalies.
+
+\subsubsection{Malicious Traffic Detection}
+Employs algorithms to identify and highlight traffic patterns that correspond to previously identified malicious behaviors, enhancing the system's preventive capabilities.
+
+\subsubsection{Graphical Anomaly Interaction Analysis}
+Analyzes the network graph to detect and examine anomalous interactions between network nodes, providing intuitive insights into the nature and potential impact of detected threats.
+
+\subsubsection{Feature Extractor}
+Isolates and extracts relevant features from network flow data, crucial for the precise identification and classification of network anomalies.
+
+\section{Conclusion}
+The structured approach of dividing the system into three distinct but interrelated models allows for a layered defense against cyber threats. By systematically structuring and analyzing data through these models, our system enhances the capability to detect, visualize, and respond to sophisticated cyber threats effectively.

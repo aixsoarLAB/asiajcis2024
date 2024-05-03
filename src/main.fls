@@ -158,6 +158,9 @@ INPUT related.tex
 INPUT .\arch.tex
 INPUT .\arch.tex
 INPUT arch.tex
+INPUT ..\images\Screenshot 2024-05-03 123930.png
+INPUT ..\images\Screenshot 2024-05-03 123930.png
+INPUT ..\images\Screenshot 2024-05-03 123930.png
 INPUT .\exps.tex
 INPUT .\exps.tex
 INPUT exps.tex

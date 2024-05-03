@@ -1,10 +1,11 @@
 # Fdb version 4
-["xdvipdfmx"] 1714378808.65378 "main.xdv" "main.pdf" "main" 1714378808.88692 0
-  "main.xdv" 1714378808 20676 15da855dcdc2a43f5fef559acdeba3ff "xelatex"
+["xdvipdfmx"] 1714712880.03993 "main.xdv" "main.pdf" "main" 1714712880.31047 0
+  "main.xdv" 1714712879 24976 510df3f26a02fb71179017e12e9e9c0d "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1714378808.00223 "d:/asiajcis2024/src/main.tex" "main.xdv" "main" 1714378808.8848 0
+["xelatex"] 1714712879.48151 "d:/asiajcis2024/src/main.tex" "main.xdv" "main" 1714712880.30887 0
+  "../images/Screenshot 2024-05-03 123930.png" 1714711194 25811 9e6c7be06b17502f457e606779de7a0d ""
   "C:/Users/Tommy/AppData/Local/MiKTeX/miktex/data/le/xetex/xelatex.fmt" 1713537338 37546048 d8a5fd1818be9be38fea23abae550ec2 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb7t.tfm" 1136743454 2172 fd0c924230362ff848a33632ed45dc23 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb8t.tfm" 1136743454 6880 f19b8995b61c334d78fc734065f6b4d4 ""
@@ -51,13 +52,13 @@
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/t1ptm.fd" 1585253778 817 61d7da1e9f9e74989b196d147e623736 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "abstract.tex" 1714378371 1529 7944178cc124e5248b38ccda6ce701c8 ""
-  "arch.tex" 1713779751 31 e5b5f2348ecd4c9f6a5cbce30b87eedd ""
+  "arch.tex" 1714712878 3227 99fe4965cf53bea37c07ac36a0babf61 ""
   "conc.tex" 1713780076 3095 86317e813ee72ee8e0ab2e71a8ceb61a ""
-  "d:/asiajcis2024/src/main.tex" 1713780159 3462 a89f1dda9f855e0f28f9dd8da3384c27 ""
+  "d:/asiajcis2024/src/main.tex" 1714710477 3481 497cfba8bde657d144a85e384e2bdd4f ""
   "exps.tex" 1714378807 4807 27efaf5a8f80fd25fb465c983234802e ""
   "intro.tex" 1714378496 2889 66df5ad6eb9f63e6cced611bce5a3376 ""
-  "main.aux" 1714378808 2903 1232991aaafb154ef4f785977f9a55f1 "xelatex"
-  "main.tex" 1713780159 3462 a89f1dda9f855e0f28f9dd8da3384c27 ""
+  "main.aux" 1714712879 4742 74ef232d95b9caa57f1f2381f2551805 "xelatex"
+  "main.tex" 1714710477 3481 497cfba8bde657d144a85e384e2bdd4f ""
   "related.tex" 1713779728 26 e5aa06281b4f2cdc3cb2d94a66d99c58 ""
   (generated)
   "main.aux"

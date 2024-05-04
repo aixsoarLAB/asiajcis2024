@@ -5,15 +5,36 @@
 
 \subsection{Model 1: Anomaly Detection and Interpretation}
 The first model focuses on evaluating event logs and NIDS alert logs. This includes several components designed to parse, interpret, and extract meaningful patterns from the data.
+使用deeplog 或 deepcase 分析Event Logs 以及Alert Logs。透過預測下一事件判斷是否為異常行為，期望能夠達到降低虛警率並提升異常偵測。
+在Event Logs 的部分，我們將Event Logs 中的Event ID 萃取出，透過Event ID 的前後關係進行判斷。
+在Alert Logs 的部分，我們將Alert Logs 中的Signature ID 萃取出，透過Signature ID 的前後關係進行判斷。
+
+\subsubsection{Anomaly Detection}
+透過模型預測特定主機特定時間之序列異常量，進而計算異常分數，並給予評分。
 
 \subsubsection{Interpreter}
 The Interpreter component processes incoming data by converting unstructured or semi-structured information into a structured format that can be analyzed for anomalies.
-
-\subsubsection{Behavior Extractor}
-This component extracts behavioral patterns from the data provided by hosts, particularly from event logs, identifying deviations from normal operations that signal potential security threats.
+Attention query : context builder預測了不正確的事件，導致錯誤的結論。意味著對於不正確的預測，我們將退回手動檢查。
+Attention query考慮到實際發生的安全事件，哪種attention distribution會導致正確的預測。
+(deepcase paper p.5 c-1)
+Clusters : 通過將注意力向量與其對應的事件結合來對每個序列進行建模，可以將具有相似向量的序列進行比較和分組。
+(deepcase paper p.5 c-2)
 
 \subsubsection{Context Builder}
 Integrates contextual information into the data interpretation process, enhancing the accuracy and relevance of the anomaly detection.
+Preprocessor：
+將輸入之檔案轉換為model input 所需之格式。其中包含mapping 以及context。在mapping 的部分preprocessor 會將輸入之檔案中所有事件替代為特定代號，代號區間為[0 ~ 事件數量]，而最後一個代號為-1337代表空格。context 則會將該序列轉換為前n個序列組成的串列，n 為變數，可自行決定。最後輸出tensor 為training data，dictionary 為mapping data。
+
+Context Builder：
+輸入training data，採用Deep LSTM 經過模型訓練後生成信心值，取top k 作為預測結果，k 為變數。
+識別相關的上下文事件以建立一個注意力向量。在這裡，相關性意味著我們的方法應該識別由攻擊觸發的事件，並將它們與由良性應用程序或良性用戶行為意外觸發的事件區分開來。
+(deepcase paper p.3 b)
+
+\subsubsection{Behavior Extractor}
+This component extracts behavioral patterns from the data provided by hosts, particularly from event logs, identifying deviations from normal operations that signal potential security threats.
+針對Event Logs 以及Alert Logs 萃取特定特徵並轉換成時間序列。
+對於Event Logs：首先將日誌檔案(.evtx)轉換為json 格式後透過模組萃取出時間序列(.txt)。
+對於Alert Logs：將網路流量(.pcap)經過suricata 產生Alert 後透過模組萃取出時間序列(.txt)。
 
 \subsection{Model 2: Tagging and Network Analysis}
 This model evaluates NIDS alert logs and network flow pcap files. It structures these data sources and utilizes the information to build a comprehensive network graph, which is crucial for visualizing network interactions and identifying potential threats.

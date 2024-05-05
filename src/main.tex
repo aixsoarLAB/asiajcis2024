@@ -9,6 +9,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
 \pagestyle{plain}
+\usepackage{placeins}
+\usepackage{wrapfig}
+\usepackage{stfloats}
 \begin{document}
 
 \title{Leveraging Multilayer Threat Graph Detection Techniques for Correlation and Risk Assessment}
@@ -70,16 +73,33 @@
 \input{conc.tex}
 
 \begin{thebibliography}{00}
-    \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-    \bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-    \bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-    \bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-    \bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-    \bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-    \bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+    \bibitem{1} J. Lan, Y. Li, B. Li, and X. Liu, ``Matter: A Multi-Level Attention-Enhanced Representation Learning Model for Network Intrusion Detection,'' in \textit{IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom)}, Los Alamitos, CA, USA, IEEE Computer Society, pp. 111--116, Dec. 2022.
+    \bibitem{2} D. Mudzingwa et al., ``A Study of Methodologies Used in Intrusion Detection and Prevention Systems (IDPS),'' in \textit{2012 Proceedings of IEEE Southeastcon}, pp. 1--6, Mar. 2012.
+    \bibitem{3} S. Walling and S. Lodh, ``A Survey on Intrusion Detection Systems: Types, Datasets, Machine Learning Methods for NIDS and Challenges,'' in \textit{13th International Conference on Computing Communication and Networking Technologies (ICCCNT)}, pp. 1--7, Oct. 2022.
+    \bibitem{4} P. V. Pandit et al., ``Implementation of Intrusion Detection System Using Various Machine Learning Approaches with Ensemble learning,'' in \textit{2023 International Conference on Advancement in Computation and Computer Technologies (InCACCT)}, pp. 468--472, May 2023.
+    \bibitem{5} J. Straub, ``Modeling Attack, Defense and Threat Trees and the Cyber Kill Chain, ATT‘I\&’CK and STRIDE Frameworks as Blackboard Architecture Networks,'' in \textit{2020 IEEE International Conference on Smart Cloud (SmartCloud)}, pp. 148--153, Nov. 2020.
+    \bibitem{6} T. N. Kipf and M. Welling, ``Semi-supervised Classification with Graph Convolutional Networks,'' \textit{arXiv preprint arXiv:1609.02907}, Sept. 2017.
+    \bibitem{7} M. Safaei Pour, C. Nader, K. Friday, and E. Bou-Harb, ``A Comprehensive Survey of Recent Internet Measurement Techniques for Cyber Security,'' \textit{Computers \& Security}, vol. 128, pp. 103123, 2023, doi: https://doi.org/10.1016/j.cose.2023.103123.
+    \bibitem{8} Park J.H., Rathore S., Singh S.K., Salim M.M., Azzaoui A., Kim T.W., Pan Y., Park J.H., ``A Comprehensive Survey on Core Technologies and Services for 5G Security: Taxonomies, Issues, and Solutions,'' \textit{Human-Centric Computing and Information Sciences}, vol. 11, article 3, 2021.
+    \bibitem{9} Gupta S., Parne B.L., Chaudhari N.S., ``Security Vulnerabilities in Handover Authentication Mechanism of 5G Network,'' in \textit{Proceedings of the 2018 First International Conference on Secure Cyber Computing and Communication (ICSCCC)}, Jalandhar, India, pp. 369-374, Dec. 2018.
+    \bibitem{10} Borgaonkar R., Tøndel I.A., Degefa M.Z., Jaatun M.G., ``Improving Smart Grid Security Through 5G Enabled IoT and Edge Computing,'' \textit{Concurrency and Computation: Practice and Experience}, vol. 33, e6466, 2021.
+    \bibitem{11} Gonzalez A.J., Grønsund P., Dimitriadis A., Reshytnik D., ``Information Security in a 5G Facility: An Implementation Experience,'' in \textit{Proceedings of the 2021 Joint European Conference on Networks and Communications \& 6G Summit (EuCNC/6G Summit)}, Porto, Portugal, pp. 425-430, June 2021.
+    \bibitem{12} Nalendra, A. ``Rapid Application Development (RAD) model method for creating an agricultural irrigation system based on internet of things,'' in \textit{Proceedings of the IOP Conference Series: Materials Science and Engineering}, Sanya, China, IOP Publishing: Bristol, UK, vol. 1098, p. 022103, Nov. 2021.
+    \bibitem{13} Chun, J.; Lee, J.; Kim, J.; Lee, S., ``An international systematic review of cyberbullying measurements,'' \textit{Comput. Hum. Behav.}, vol. 113, 106485, 2020.
+    \bibitem{14} Wu, J.; Zhang, C.; Liu, Z.; Zhang, E.; Wilson, S.; Zhang, C., ``Graphbert: Bridging graph and text for malicious behavior detection on social media,'' in \textit{Proceedings of the 2022 IEEE International Conference on Data Mining (ICDM)}, Orlando, FL, USA, pp. 548–557, Nov.-Dec. 2022.
+    \bibitem{15} Alkhalil, Z.; Hewage, C.; Nawaf, L.; Khan, I., ``Phishing attacks: A recent comprehensive study and a new anatomy,'' \textit{Front. Comput. Sci.}, vol. 3, 563060, 2021.
+    \bibitem{16} Liu, Q.; Hagenmeyer, V.; Keller, H.B., ``A review of rule learning-based intrusion detection systems and their prospects in smart grids,'' \textit{IEEE Access}, vol. 9, pp. 57542–57564, 2021.
+    \bibitem{17} Rezaimehr, F.; Dadkhah, C., ``A survey of attack detection approaches in collaborative filtering recommender systems,'' \textit{Artif. Intell. Rev.}, vol. 54, pp. 2011–2066, 2021.
+    \bibitem{18} Zhang K, Liu J, ``Review on the application of knowledge graph in cyber security assessment,'' in \textit{IOP Conference Series: Materials Science and Engineering}, IOP Publishing, vol. 768, p. 052103, 2020.
+    \bibitem{19} Sikos LF, ``AI-powered cybersecurity: from automated threat detection to adaptive defense,'' \textit{CISO Mag}, vol. 4, no. 5, pp. 74–87, 2020.
+    \bibitem{20} Sikos LF, Philp D, Stumptner M, et al., ``Visualization of conceptualized dynamic network knowledge for cyber-situational awareness,'' in \textit{Proceedings of the 8th International Conference on Concept Mapping}, p. 396, 2018.
+    \bibitem{21} Johnson JH, ``Embracing n-ary relations in network science,'' in \textit{Advances in Network Science}, Springer, Cham, pp. 147–160, 2016.
+    \bibitem{22} Sikos LF, Stumptner M, Mayer W, et al., ``Representing network knowledge using provenance-aware formalisms for cyber-situational awareness,'' \textit{Procedia Comput. Sci.}, vol. 126, pp. 29–38, 2018.
+    \bibitem{23} Garae J, Ko RKL, ``Visualization and data provenance trends in decision support for cybersecurity,'' in \textit{Data Analytics and Decision Support for Cybersecurity}, Springer, Cham, pp. 243–270, 2017.
+    \bibitem{24} Hublikar, Shivaraj and Shet, N. Shekar V., ``Malicious encrypted network traffic flow detection using enhanced optimal deep feature selection with DLSTM,'' \textit{International Journal of Modeling, Simulation, and Scientific Computing}, vol. 15, no. 01, pp. 2450011, 2024. DOI: 10.1142/S1793962324500119.
+    \bibitem{25} Estan, C. and Varghese, G., ``New directions in traffic measurement and accounting: Focusing on the elephants, ignoring the mice,'' \textit{ACM Trans. Comput. Syst.}, vol. 21, no. 3, pp. 270–313, 2003.
+    \bibitem{26} Eshete, B. and Venkatakrishnan, V. N., ``Dynaminer: Leveraging offline infection analytics for on-the-wire malware detection,'' in \textit{DSN. IEEE}, 2017, pp. 463–474.
 \end{thebibliography}
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
 
+\vspace{12pt}
 \end{document}

@@ -56,6 +56,12 @@ INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\psnfss\t1ptm.fd
 INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8t.tfm
 INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\psnfss\mathptmx.sty
 INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\psnfss\mathptmx.sty
+INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\placeins\placeins.sty
+INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\placeins\placeins.sty
+INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\sttools\stfloats.sty
+INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\sttools\stfloats.sty
 INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
 INPUT C:\Users\Tommy\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-xetex.def
 INPUT .\main.aux
@@ -155,12 +161,18 @@ OUTPUT main.xdv
 INPUT .\related.tex
 INPUT .\related.tex
 INPUT related.tex
-INPUT ..\images\Screenshot 2024-05-03 123930.png
-INPUT ..\images\Screenshot 2024-05-03 123930.png
-INPUT ..\images\Screenshot 2024-05-03 123930.png
 INPUT .\arch.tex
 INPUT .\arch.tex
 INPUT arch.tex
+INPUT ..\images\Overall system architecture.jpg
+INPUT ..\images\Overall system architecture.jpg
+INPUT ..\images\Overall system architecture.jpg
+INPUT ..\images\System Architecture.png
+INPUT ..\images\System Architecture.png
+INPUT ..\images\System Architecture.png
+INPUT ..\images\Tagging and Network Analysis.png
+INPUT ..\images\Tagging and Network Analysis.png
+INPUT ..\images\Tagging and Network Analysis.png
 INPUT .\exps.tex
 INPUT .\exps.tex
 INPUT exps.tex

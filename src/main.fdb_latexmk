@@ -1,11 +1,13 @@
 # Fdb version 4
-["xdvipdfmx"] 1714732742.93096 "main.xdv" "main.pdf" "main" 1714732743.20399 0
-  "main.xdv" 1714732742 25088 48665ce720b1f835619b77c95910193d "xelatex"
+["xdvipdfmx"] 1714901957.27442 "main.xdv" "main.pdf" "main" 1714901958.07488 0
+  "main.xdv" 1714901957 52816 69b7a8fad94c06eb4fb03203132ea101 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1714732742.33082 "d:/asiajcis2024/src/main.tex" "main.xdv" "main" 1714732743.20237 0
-  "../images/Screenshot 2024-05-03 123930.png" 1714711194 25811 9e6c7be06b17502f457e606779de7a0d ""
+["xelatex"] 1714901956.58465 "d:/asiajcis2024/src/main.tex" "main.xdv" "main" 1714901958.07315 0
+  "../images/Overall system architecture.jpg" 1714900791 282105 d4e614fa6b153328ee632d0b163210a3 ""
+  "../images/System Architecture.png" 1714809222 82714 f2b6c7ff1d7a6f555e07f20c9c46ad3a ""
+  "../images/Tagging and Network Analysis.png" 1714887784 506173 486029213a9eba2b794b3c68b5f5e71d ""
   "C:/Users/Tommy/AppData/Local/MiKTeX/miktex/data/le/xetex/xelatex.fmt" 1713537338 37546048 d8a5fd1818be9be38fea23abae550ec2 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb7t.tfm" 1136743454 2172 fd0c924230362ff848a33632ed45dc23 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb8t.tfm" 1136743454 6880 f19b8995b61c334d78fc734065f6b4d4 ""
@@ -43,6 +45,7 @@
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty" 1665067579 4023 293ea1c16429fc0c4cf605f4da1791a9 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/ieeetran/IEEEtran.cls" 1440627644 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-xetex.def" 1704400941 31815 935a376385ab1feff82e3d2187c4f47a ""
+  "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty" 1113865200 4087 636308456f60d2b31cbf97867db5708d ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/mathptmx.sty" 1585926771 4760 6e41de2b7a83dfa5d2c4b0a2fe01f046 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/omlztmcm.fd" 1585253778 429 12564a37a279e4e0b533cdf5e03eeb7c ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/omsztmcm.fd" 1585253778 365 f4ce75d394e7d9ac12ca7aac4045ed77 ""
@@ -50,16 +53,18 @@
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ztmcm.fd" 1585253778 346 aee7226812ba4138ac67a018466b488d ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/t1ptm.fd" 1585253778 817 61d7da1e9f9e74989b196d147e623736 ""
+  "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/sttools/stfloats.sty" 1634199215 24057 ff20efb65b128d27c08eac20ec07f540 ""
+  "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/wrapfig/wrapfig.sty" 1044403200 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "C:/Users/Tommy/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "abstract.tex" 1714378371 1529 7944178cc124e5248b38ccda6ce701c8 ""
-  "arch.tex" 1714731120 3006 740f5e8141fa8a2d4d6b4e6776363d18 ""
+  "arch.tex" 1714901955 14529 2900770ecdc416cc45eed65ffb72ae63 ""
   "conc.tex" 1713780076 3095 86317e813ee72ee8e0ab2e71a8ceb61a ""
-  "d:/asiajcis2024/src/main.tex" 1714732741 3562 7a5d3030a5b3bb8cad6754773d20be47 ""
-  "exps.tex" 1714378807 4807 27efaf5a8f80fd25fb465c983234802e ""
+  "d:/asiajcis2024/src/main.tex" 1714901915 8548 ac1c2aa76613f3b5e6cd8b74c9dc2bf2 ""
+  "exps.tex" 1714900074 6376 2e30a3b1e3e266840287b40aec8ee1bc ""
   "intro.tex" 1714378496 2889 66df5ad6eb9f63e6cced611bce5a3376 ""
-  "main.aux" 1714732742 4742 74ef232d95b9caa57f1f2381f2551805 "xelatex"
-  "main.tex" 1714732741 3562 7a5d3030a5b3bb8cad6754773d20be47 ""
-  "related.tex" 1714731119 245 46490616278dc3d9d58421b3a605bfa8 ""
+  "main.aux" 1714901957 7120 ddd2aae4f0e99ce04a4a1de1df4c3daf "xelatex"
+  "main.tex" 1714901915 8548 ac1c2aa76613f3b5e6cd8b74c9dc2bf2 ""
+  "related.tex" 1714901581 21198 4438185bcbc5252c8698695ada482d0e ""
   (generated)
   "main.aux"
   "main.log"

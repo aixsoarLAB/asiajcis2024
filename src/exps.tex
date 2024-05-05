@@ -3,28 +3,37 @@
 In this section, we present the experimental validation of our proposed intelligent detection tool, comparing its performance against established baseline methods. Our tool focuses on accurately identifying and tracking sophisticated attack patterns by analyzing a variety of network data sources, including both encrypted traffic and interactions from untrusted services. We evaluate the tool's effectiveness in both short-term and extended attack campaigns, highlighting its practical implications for enhancing network security.
 
 \subsection{Experimental Setup}\label{sec:experimental-setup}
-We configured our experimental framework within a VMWare environment, equipped with a 24-core Intel processor and 64GB RAM. This setup supports our advanced deep learning models and data analysis tools, specifically DeepLog and HyperVision, both integrated with Python. The experimental framework is fine-tuned for high-volume network traffic simulation, providing a robust platform for our tests.
+Our experiments are conducted on a virtual machine environment configured on Ubuntu 22.04 LTS, using OpenStack Nova (version 18.2.2). This setup runs on dual Intel Xeon Processors (Skylake, IBRS), each with 4 cores at 2 GHz, and includes 64GiB of ECC RAM to ensure stable and efficient processing.
+
+\subsubsection{Hardware and Virtual Machine Configuration}
+The system configuration comprises:
+\begin{itemize}
+    \item \textbf{CPUs:} Dual 2 GHz Intel Xeon with hyper-threading and virtualization support, essential for simulating complex network scenarios.
+    \item \textbf{Memory:} 64GiB of ECC RAM, providing robust error correction capabilities critical for handling large-scale data processing.
+    \item \textbf{Storage:} 2TB of disk space across multiple virtual storage devices, facilitating extensive data logging and analysis.
+    \item \textbf{Networking:} High-speed Virtio network device optimized for low overhead and high throughput, vital for network traffic analysis.
+\end{itemize}
+
+This VMWare-hosted environment supports our deep learning models and Python-integrated tools, finely tuned for high-volume network traffic simulation and analysis. The setup ensures minimal detection latency and maximizes system responsiveness and accuracy.
 
 \subsection{Dataset and Evaluation Metrics}\label{sec:env}
-To ensure a comprehensive evaluation, our methodology incorporates both synthetic and real-world datasets:
+To ensure a comprehensive evaluation, our methodology incorporates a mix of synthetic, real-world, and third-party datasets, enabling a robust assessment of our detection tool under various conditions:
 \begin{itemize}
-    \item The \textbf{CICIDS2017 dataset}, which simulates realistic network traffic and attack scenarios, serves as a benchmark for testing intrusion detection systems.
-    \item \textbf{Real-world data} from over 700 hosts of an online gaming service enrich our dataset, adding authenticity and reflecting true operational environments. These logs are anonymized to address privacy and security concerns.
+    \item The \textbf{CICIDS2017 dataset} and \textbf{CICIDS2018 dataset} simulate realistic network traffic and attack scenarios, serving as benchmarks for testing intrusion detection systems.
+    \item \textbf{Real-world data} from over a hundred computers at The Philippines Office, collected over eight months, adds operational realism and depth to our evaluation.
+    \item We further include datasets from the study by Hublikar and Shet \cite{24}, which feature specific attack scenarios such as:
+          \begin{itemize}
+              \item Traditional brute force attacks — testing the capability of our tool to detect persistent login attempts.
+              \item Encrypted flooding traffic — assessing the effectiveness in recognizing DoS attacks disguised under encryption.
+              \item Encrypted web malicious traffic — evaluating detection of malicious activities conducted through secure web protocols.
+              \item Malware generated encrypted traffic — examining the tool’s ability to identify malware communication over encrypted channels.
+          \end{itemize}
 \end{itemize}
-
-We employ several metrics to gauge the detection capabilities of our system:
-\begin{itemize}
-    \item \textbf{Accuracy}: Measures the proportion of true results (both true positives and true negatives) among the total cases examined.
-    \item \textbf{Precision and Recall}: Evaluate the effectiveness in correctly identifying genuine threats and the system’s capacity to detect all relevant attacks, respectively.
-    \item \textbf{F1-Score}: Harmonizes precision and recall in a single metric, crucial for balancing their trade-offs in scenarios with skewed class distributions.
-\end{itemize}
+These datasets collectively facilitate a detailed analysis of the tool's performance, with metrics including accuracy, precision, recall, and the F1 score to quantitatively assess its effectiveness across different types of network threats.
 
 \subsection{Testbed Configuration}\label{sec:testbed}
-HyperVision, our sophisticated network detection platform, is optimized for real-time analysis of network traffic, configured to detect:
-\begin{itemize}
-    \item \textbf{Inside and Outside NDR}: Aiming at both lateral movements within the network and external threats, enhancing our dual-layer security approach.
-    \item \textbf{Abnormal Protocol Detection}: Specialized modules for identifying deviations from standard protocol use, indicative of covert channels or unauthorized data transfers.
-\end{itemize}
+Our testbed leverages an integrated suite of technologies including Suricata for intrusion detection, OpenCTI for threat intelligence management, and the ELK stack for data processing and visualization, all running on a system that mirrors network traffic to ensure comprehensive monitoring without disrupting actual data flows. This setup enhances our ability to simulate, monitor, and analyze both encrypted and unencrypted network traffic efficiently. Using these tools in conjunction, we achieve real-time threat detection and analysis, with Elasticsearch indexing the vast amounts of data generated, Logstash processing and structuring this data, and Kibana providing immediate visual insights, which collectively support an agile response to emerging security threats.
+
 
 \subsection{Results}\label{sec:results}
 Our experimental results underscore the robustness of our detection system:

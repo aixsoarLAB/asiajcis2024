@@ -1,64 +1,129 @@
 \section{System Architecture}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{../images/Overall system architecture.jpg}
+    \caption{Overview of the Overall System Architecture}
+    \label{fig:overall_system_arch}
+\end{figure*}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{../images/System Architecture.png}
+    \caption{Detailed Overview of the System Components}
+    \label{fig:detailed_system_arch}
+\end{figure*}
+
 
 
 
 \subsection{Model 1: Anomaly Detection and Interpretation}
-The first model focuses on evaluating event logs and NIDS alert logs. This includes several components designed to parse, interpret, and extract meaningful patterns from the data.
-使用deeplog 或 deepcase 分析Event Logs 以及Alert Logs。透過預測下一事件判斷是否為異常行為，期望能夠達到降低虛警率並提升異常偵測。
-在Event Logs 的部分，我們將Event Logs 中的Event ID 萃取出，透過Event ID 的前後關係進行判斷。
-在Alert Logs 的部分，我們將Alert Logs 中的Signature ID 萃取出，透過Signature ID 的前後關係進行判斷。
+This model primarily focuses on the analysis of event logs and NIDS (Network Intrusion Detection System) alert logs using advanced tools such as DeepLog or DeepCase. The core objective is to predict subsequent events and determine whether they constitute anomalous behavior, thereby aiming to reduce false alarm rates and enhance anomaly detection. Both event logs and alert logs are analyzed by extracting their respective identifiers—Event IDs for event logs and Signature IDs for alert logs. The model then examines the sequential relationships of these identifiers to identify potential irregularities and ascertain anomalies.
 
-\subsubsection{Anomaly Detection}
-透過模型預測特定主機特定時間之序列異常量，進而計算異常分數，並給予評分。
+\subsubsection{Behavioral Pattern Extraction}
+This component is crucial for extracting behavioral patterns from the data supplied by hosts, particularly focusing on event logs and alert logs to identify deviations from normal operations that may indicate potential security threats.
 
-\subsubsection{Interpreter}
-The Interpreter component processes incoming data by converting unstructured or semi-structured information into a structured format that can be analyzed for anomalies.
-Attention query : context builder預測了不正確的事件，導致錯誤的結論。意味著對於不正確的預測，我們將退回手動檢查。
-Attention query考慮到實際發生的安全事件，哪種attention distribution會導致正確的預測。
-(deepcase paper p.5 c-1)
-Clusters : 通過將注意力向量與其對應的事件結合來對每個序列進行建模，可以將具有相似向量的序列進行比較和分組。
-(deepcase paper p.5 c-2)
+\paragraph{Event Logs:}
+For event logs, the process begins by converting log files (typically in .evtx format) into a more manageable JSON format. Subsequently, a specialized module extracts the time series data, which is then saved in a text file (.txt). This transformation is critical for isolating and analyzing behavior patterns over time, allowing for the identification of anomalies that deviate from established norms.
+
+\paragraph{Alert Logs:}
+Similarly, for alert logs, network traffic data stored in .pcap format is processed using the Suricata engine to generate alerts. These alerts are then converted by the module into a time series format and saved as text files (.txt). This process is designed to capture and evaluate the sequence of events that may signal unauthorized or malicious activities within the network.
+
+By systematically transforming and analyzing these logs, the component enhances the capability to detect and respond to potential security threats efficiently, ensuring that only the most relevant data is considered in the ongoing security assessment.
 
 \subsubsection{Context Builder}
-Integrates contextual information into the data interpretation process, enhancing the accuracy and relevance of the anomaly detection.
-Preprocessor：
-將輸入之檔案轉換為model input 所需之格式。其中包含mapping 以及context。在mapping 的部分preprocessor 會將輸入之檔案中所有事件替代為特定代號，代號區間為[0 ~ 事件數量]，而最後一個代號為-1337代表空格。context 則會將該序列轉換為前n個序列組成的串列，n 為變數，可自行決定。最後輸出tensor 為training data，dictionary 為mapping data。
 
-Context Builder：
-輸入training data，採用Deep LSTM 經過模型訓練後生成信心值，取top k 作為預測結果，k 為變數。
-識別相關的上下文事件以建立一個注意力向量。在這裡，相關性意味著我們的方法應該識別由攻擊觸發的事件，並將它們與由良性應用程序或良性用戶行為意外觸發的事件區分開來。
-(deepcase paper p.3 b)
+The Context Builder is designed to enhance the accuracy and relevance of anomaly detection by integrating contextual information into the data interpretation process. This component encompasses both preprocessing and analysis steps:
 
-\subsubsection{Behavior Extractor}
-This component extracts behavioral patterns from the data provided by hosts, particularly from event logs, identifying deviations from normal operations that signal potential security threats.
-針對Event Logs 以及Alert Logs 萃取特定特徵並轉換成時間序列。
-對於Event Logs：首先將日誌檔案(.evtx)轉換為json 格式後透過模組萃取出時間序列(.txt)。
-對於Alert Logs：將網路流量(.pcap)經過suricata 產生Alert 後透過模組萃取出時間序列(.txt)。
+The preprocessing stage involves transforming input files into a structured format necessary for model input. This includes a mapping process where each event in the input file is replaced with a specific code—ranging from 0 to the number of events, with the final code, -1337, representing a blank space. It also constructs context by converting the sequence into a list composed of the previous `n` sequences, which can be customized based on the model's needs.
+
+Following preprocessing, the Context Builder employs a Deep LSTM network that uses the structured input to train the model and generate confidence values. It selects the top `k` predictions based on these values to ensure precise anomaly detection. This advanced model excels at identifying contextually relevant events and distinguishing those triggered by malicious attacks from those inadvertently triggered by benign applications or user behaviors. This capability is vital for building an attention vector that accurately reflects security threats, as highlighted in the relevant literature.
+
+\subsubsection{Interpreter}
+
+The Interpreter component is essential for transforming incoming data from unstructured or semi-structured forms into a structured format suitable for further anomaly analysis. This transformation is crucial for accurately identifying deviations from typical patterns.
+
+The subsystem also includes an "Attention Query" mechanism, which plays a critical role in evaluating the effectiveness of the predictions made. If an incorrect event is predicted, leading to erroneous conclusions, a manual review is initiated to ensure accuracy. This step highlights the model's capability to revert to manual checks when automated predictions fail, thus maintaining the integrity of the analysis.
+
+Additionally, the Attention Query considers actual security incidents to determine which type of attention distribution results in correct predictions. This analysis helps in refining the predictive model to improve its accuracy and reliability in real-world scenarios.
+
+\subsubsection{Anomaly Detection}
+This model focuses on predicting anomalies in specific hosts over determined periods by calculating and scoring deviations from normal activity sequences. The anomaly scores help in assessing the severity and potential impact of disruptions, enabling prioritized responses and better resource allocation for threat mitigation. This method enhances both immediate and long-term security measures by allowing ongoing monitoring and trend analysis.
+
+
+%透過模型預測特定主機特定時間之序列異常量，進而計算異常分數，並給予評分。
+%使用deeplog 或 deepcase 分析Event Logs 以及Alert Logs。透過預測下一事件判斷是否為異常行為，期望能夠達到降低虛警率並提升異常偵測。
+%在Event Logs 的部分，我們將Event Logs 中的Event ID 萃取出，透過Event ID 的前後關係進行判斷。
+%在Alert Logs 的部分，我們將Alert Logs 中的Signature ID 萃取出，透過Signature ID 的前後關係進行判斷。
+% The Interpreter component processes incoming data by converting unstructured or semi-structured information into a structured format that can be analyzed for anomalies.
+% Attention query : context builder預測了不正確的事件，導致錯誤的結論。意味著對於不正確的預測，我們將退回手動檢查。
+% Attention query考慮到實際發生的安全事件，哪種attention distribution會導致正確的預測。
+% (deepcase paper p.5 c-1)
+% Clusters : 通過將注意力向量與其對應的事件結合來對每個序列進行建模，可以將具有相似向量的序列進行比較和分組。
+% (deepcase paper p.5 c-2)
+
+% Integrates contextual information into the data interpretation process, enhancing the accuracy and relevance of the anomaly detection.
+% Preprocessor：
+% 將輸入之檔案轉換為model input 所需之格式。其中包含mapping 以及context。在mapping 的部分preprocessor 會將輸入之檔案中所有事件替代為特定代號，代號區間為[0 ~ 事件數量]，而最後一個代號為-1337代表空格。context 則會將該序列轉換為前n個序列組成的串列，n 為變數，可自行決定。最後輸出tensor 為training data，dictionary 為mapping data。
+
+% Context Builder：
+% 輸入training data，採用Deep LSTM 經過模型訓練後生成信心值，取top k 作為預測結果，k 為變數。
+% 識別相關的上下文事件以建立一個注意力向量。在這裡，相關性意味著我們的方法應該識別由攻擊觸發的事件，並將它們與由良性應用程序或良性用戶行為意外觸發的事件區分開來。
+% (deepcase paper p.3 b)
+
+% This component extracts behavioral patterns from the data provided by hosts, particularly from event logs, identifying deviations from normal operations that signal potential security threats.
+% 針對Event Logs 以及Alert Logs 萃取特定特徵並轉換成時間序列。
+% 對於Event Logs：首先將日誌檔案(.evtx)轉換為json 格式後透過模組萃取出時間序列(.txt)。
+% 對於Alert Logs：將網路流量(.pcap)經過suricata 產生Alert 後透過模組萃取出時間序列(.txt)。
 
 \subsection{Model 2: Tagging and Network Analysis}
-This model evaluates NIDS alert logs and network flow pcap files. It structures these data sources and utilizes the information to build a comprehensive network graph, which is crucial for visualizing network interactions and identifying potential threats.
+This model rigorously analyzes NIDS (Network Intrusion Detection System) alert logs alongside network flow pcap (Packet Capture) files. It effectively structures these data sources and leverages this structured data to construct an intricate network graph. This graph is instrumental in visualizing complex network interactions and pinpointing potential security threats with enhanced accuracy.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../images/Tagging and Network Analysis.png}
+    \caption{Multilayer Network Threat Graph Example}
+    \label{fig:networkthreatmap}
+\end{figure}
 
 \subsubsection{Data Structuring}
-Organizes raw data into a usable format, integrating various data sources, including NIDS alert logs and pcap files, essential for the initial detection of anomalies.
+This phase involves the meticulous organization of raw data into a structured format, integrating heterogeneous data sources, notably NIDS alert logs and pcap files. Such integration is crucial for the preliminary identification and characterization of anomalies in network traffic, serving as a foundational step for subsequent analytical processes.
 
 \subsubsection{Abnormal Tagging}
-Following data structuring, this process classifies and labels data instances showing anomalous characteristics, aiding in the focused analysis of potential threats.
+Post data structuring, this critical process involves the systematic classification and labeling of data instances that exhibit anomalous behaviors. By applying advanced tagging algorithms, this step significantly enhances the targeted analysis of potential threats, streamlining the detection and response mechanisms.
 
-\subsubsection{Network Graph}
-Constructs a dynamic representation of network interactions, fundamentally supporting the visualization of threat dispersion within the network.
+\subsubsection{Network Graph Construction}
+This stage entails the creation of a dynamic network graph that provides a visual framework for the analysis of network interactions. This graph is pivotal in tracing the pathways of threat dispersion and understanding the interconnectivity within the network, thereby facilitating a comprehensive threat assessment.
+
+\subsubsection{Multilayer Network Threat Visualization}
+Figure 6 exemplifies a sophisticated multilayer network threat map. This visualization allows users to intuitively comprehend the security posture within the network environment, facilitating the identification of key nodes, the severity of incidents, and the intricacies of network connectivity. The diagram elaborately represents node interactions, using color and shape variations to convey detailed security insights.
+
+Nodes in Figure 6 are highlighted with halos, indicating a high incidence of security alerts. These halos emphasize nodes that require heightened scrutiny. Nodes are distinctly categorized by their IP address characteristics into internal, private IPs and public, internet-facing IPs. Internal IPs are denoted by light blue dots, while external IPs are marked with yellow stars, enabling swift identification of node types by users.
+
+Inter-node connections are illustrated with lines colored to indicate the severity of alerts: red for critical severity (level 3), yellow for moderate severity (level 2), and green for low severity (level 1). Hosts with extensive network connections are depicted with bold blue lines, which vary in intensity with the connection frequency. This feature assists users in identifying potential high-risk connections even without specific event triggers.
+
+The innovative design of this multilayer network threat map not only offers a panoramic view of the network's security landscape but also empowers users to rapidly pinpoint and respond to potential security vulnerabilities. By transforming complex security data into a visually intuitive format, this tool significantly enhances the efficacy of security monitoring, analysis, and decision-making processes.
+
+% \subsection{Model 3: Traffic and Feature Analysis}
+% This final model evaluates pcap files exclusively, focusing on the detection of malicious traffic and the extraction of relevant features for a deeper analysis of anomalies.
+
+% \subsubsection{Malicious Traffic Detection}
+% Employs algorithms to identify and highlight traffic patterns that correspond to previously identified malicious behaviors, enhancing the system's preventive capabilities.
+
+% \subsubsection{Graphical Anomaly Interaction Analysis}
+% Analyzes the network graph to detect and examine anomalous interactions between network nodes, providing intuitive insights into the nature and potential impact of detected threats.
+
+% \subsubsection{Feature Extractor}
+% Isolates and extracts relevant features from network flow data, crucial for the precise identification and classification of network anomalies.
 
 \subsection{Model 3: Traffic and Feature Analysis}
-This final model evaluates pcap files exclusively, focusing on the detection of malicious traffic and the extraction of relevant features for a deeper analysis of anomalies.
+This model, inspired by the advanced methodologies outlined in recent studies, focuses on the evaluation of pcap files for detecting malicious traffic within encrypted flows and extracting significant features for in-depth anomaly analysis \cite{24, 26}.
 
 \subsubsection{Malicious Traffic Detection}
-Employs algorithms to identify and highlight traffic patterns that correspond to previously identified malicious behaviors, enhancing the system's preventive capabilities.
+Following approaches similar to those in recent works \cite{24, 26}, the Enhanced Traffic Graph Analysis Model (ETGAM) categorizes network traffic into short and long flows based on their flow size distribution \cite{25}. This classification is critical for managing the complexity of the network graph and enhancing analysis efficiency. Each flow is evaluated based on a sophisticated loss score that integrates metrics such as the Euclidean distance to the cluster center, the time range, and the flow count, crucial for identifying potential security threats in real-time.
 
 \subsubsection{Graphical Anomaly Interaction Analysis}
-Analyzes the network graph to detect and examine anomalous interactions between network nodes, providing intuitive insights into the nature and potential impact of detected threats.
+Using depth-first search (DFS), similar to the method employed in other advanced systems \cite{26}, the network traffic graph is segmented into connected components. Critical nodes identified during this process are analyzed with the Z3 SMT solver to pre-cluster edges for further detailed analysis. The DBSCAN algorithm clusters these components based on their traffic patterns, and subsequent K-Means clustering assesses the structural and flow features connected to critical vertices \cite{24, 26}.
 
 \subsubsection{Feature Extractor}
-Isolates and extracts relevant features from network flow data, crucial for the precise identification and classification of network anomalies.
-
-\section{Conclusion}
-The structured approach of dividing the system into three distinct but interrelated models allows for a layered defense against cyber threats. By systematically structuring and analyzing data through these models, our system enhances the capability to detect, visualize, and respond to sophisticated cyber threats effectively.
+Consistent with the approaches described in \cite{24, 25}, feature extraction involves analyzing pcap data to isolate crucial features such as source and destination IPs, ports, connection duration, timestamps, and protocols. These features are fundamental for the classification of network anomalies and ensure that the data is prepared for comprehensive analysis and real-time detection of security threats.

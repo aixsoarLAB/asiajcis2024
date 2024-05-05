@@ -14,10 +14,23 @@
     \label{fig:detailed_system_arch}
 \end{figure*}
 
+\subsection{The Cyber Threat Intelligence Center (CTIC)}
 
+The Cyber Threat Intelligence Center (CTIC) collects threat intelligence from various sources, including attack events, malware reports, vulnerability disclosures, and more. These threat intelligence data typically contain entities associated with specific attacks, such as attackers, victims, tools used, attack vectors, and so forth. When presenting information relationships, the Threat Graph can visualize these entities in a graphical manner, enabling users to clearly see their interconnections. CTIC's analysis of threat intelligence can also be utilized to identify attack behaviors and patterns, which can be represented in the Threat Graph as specific types of nodes or edges. Additionally, threat intelligence can be rated and prioritized to assist organizations in more effectively responding to threats. In the Threat Graph, different colors or sizes can be used to indicate the severity and priority of threats, enabling users to quickly identify and respond to the most critical threats. The CTIC's integration with the Threat Graph helps organizations gain a clearer understanding of the threat landscape and more effectively respond to various threats. Through presenting information relationships, the Threat Graph can become a powerful tool for visualizing threat intelligence and supporting organizational security decision-making. The Cyber Threat Intelligence Center comprises several key modules designed to enhance cyber defense capabilities by processing and managing threat intelligence efficiently. Below is a detailed overview of each module:
 
+\begin{enumerate}
+    \item \textbf{Intelligence Connector:} This module collects threat intelligence from a variety of sources, including public databases, private intelligence feeds, and partner-shared data. It aggregates this information and prepares it for analysis, ensuring a comprehensive data pool is available for threat assessment.
 
-\subsection{Model 1: Anomaly Detection and Interpretation}
+    \item \textbf{Intelligence Correlator:} It analyzes and correlates the collected intelligence to identify potential attack patterns, threat behaviors, and underlying security risks. This module compares new data with historical threat information to detect emerging attack trends and vulnerabilities.
+
+    \item \textbf{Validation and Testing:} This module assesses the credibility and accuracy of the threat intelligence gathered. Tasks include source verification, authenticity validation of the reported threats, and testing how the applied intelligence holds up in simulated environments to ensure its efficacy.
+
+    \item \textbf{Storage and Management:} Responsible for the secure storage and management of threat intelligence. It ensures the integrity, confidentiality, and availability of data, and manages access controls to prevent unauthorized access to sensitive information.
+
+    \item \textbf{Sharing and Exchange:} Facilitates the sharing and exchange of threat intelligence with external entities, such as other organizations and security communities. This exchange broadens the reach and effectiveness of the intelligence gathered, enhancing collective awareness and response capabilities against cyber threats.
+\end{enumerate}
+
+\subsection{Anomaly Detection and Interpretation}
 This model primarily focuses on the analysis of event logs and NIDS (Network Intrusion Detection System) alert logs using advanced tools such as DeepLog or DeepCase. The core objective is to predict subsequent events and determine whether they constitute anomalous behavior, thereby aiming to reduce false alarm rates and enhance anomaly detection. Both event logs and alert logs are analyzed by extracting their respective identifiers—Event IDs for event logs and Signature IDs for alert logs. The model then examines the sequential relationships of these identifiers to identify potential irregularities and ascertain anomalies.
 
 \subsubsection{Behavioral Pattern Extraction}
@@ -76,7 +89,7 @@ This model focuses on predicting anomalies in specific hosts over determined per
 % 對於Event Logs：首先將日誌檔案(.evtx)轉換為json 格式後透過模組萃取出時間序列(.txt)。
 % 對於Alert Logs：將網路流量(.pcap)經過suricata 產生Alert 後透過模組萃取出時間序列(.txt)。
 
-\subsection{Model 2: Tagging and Network Analysis}
+\subsection{Tagging and Network Analysis}
 This model rigorously analyzes NIDS (Network Intrusion Detection System) alert logs alongside network flow pcap (Packet Capture) files. It effectively structures these data sources and leverages this structured data to construct an intricate network graph. This graph is instrumental in visualizing complex network interactions and pinpointing potential security threats with enhanced accuracy.
 
 \begin{figure}[htbp]
@@ -116,7 +129,7 @@ The innovative design of this multilayer network threat map not only offers a pa
 % \subsubsection{Feature Extractor}
 % Isolates and extracts relevant features from network flow data, crucial for the precise identification and classification of network anomalies.
 
-\subsection{Model 3: Traffic and Feature Analysis}
+\subsection{Traffic and Feature Analysis}
 This model, inspired by the advanced methodologies outlined in recent studies, focuses on the evaluation of pcap files for detecting malicious traffic within encrypted flows and extracting significant features for in-depth anomaly analysis \cite{24, 26}.
 
 \subsubsection{Malicious Traffic Detection}
